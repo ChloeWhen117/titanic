@@ -1,0 +1,14 @@
+{
+  "name": "titanic",
+  "version": "1.0.0",
+  "description": "Passenger directory for the Titanic",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.0"
+  }
+}
