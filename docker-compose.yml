@@ -2,17 +2,18 @@ version: "3.3"
 
 services:
   mysql-db:
-    image: mysql/mysql-server:latest
+    image: mysql/mysql-server:5.7
     environment:
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=dbuser
       - MYSQL_PASSWORD=dbuserpwd
       - MYSQL_DATABASE=titanic_db
     expose:
-      - "3306"      
+      - "3306"
     ports:
       - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - ./docker/data/mysql-db:/var/lib/mysql
 
   node-app:
     build:
@@ -28,9 +29,7 @@ services:
       - ./server:/opt/app:delegated
       - ./server/package.json:/opt/package.json
       - ./server/package-lock.json:/opt/package-lock.json
-      - notused:/opt/app/node_modules
-    networks:
-      - titanic-network
+      - ./server/opt/app/node_modules
 
   client:
     build:
@@ -44,15 +43,5 @@ services:
       - ./client:/opt/app:delegated
       - ./client/package.json:/opt/package.json
       - ./client/package-lock.json:/opt/package-lock.json
-      - notused:/opt/app/node_modules
-    networks:
-      - titanic-network
-
-networks:
-  titanic-network:
-    driver: bridge
-
-volumes:
-  db_data:
-  notused:
+      - ./client/opt/app/node_modules
 
