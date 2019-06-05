@@ -15,7 +15,8 @@ ENV PATH /opt/node_modules/.bin:$PATH
 WORKDIR /opt/app
 COPY . /opt/app
 
-CMD ["npm", "start"]
+RUN chmod +x ./wait-for.sh
+CMD sh -c './wait-for.sh -t 0 mysql-db:3306 -- npm start'
 
 EXPOSE 5000
 
