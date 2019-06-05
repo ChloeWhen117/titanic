@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   mysql-db:
-    image: mysql/mysql-server:5.7
+    image: mysql:5.7
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
@@ -22,16 +22,18 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - mysql-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD=dbuserpwd
+      - MYSQL_DATABASE=titanic_db      
     expose:
       - "5000"      
     ports:
       - "5000:5000"
     volumes:
-      - ./server:/opt/app:delegated
-      - ./server/package.json:/opt/package.json
-      - ./server/package-lock.json:/opt/package-lock.json
-      - ./server/opt/app/node_modules
-
+      - /app/node_modules
+      - ./server:/app
   client:
     build:
       context: ./client
@@ -41,8 +43,6 @@ services:
     ports:
       - "80:3000"
     volumes:
-      - ./client:/opt/app:delegated
-      - ./client/package.json:/opt/package.json
-      - ./client/package-lock.json:/opt/package-lock.json
-      - ./client/opt/app/node_modules
+      - /app/node_modules
+      - ./client:/app
 
