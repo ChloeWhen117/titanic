@@ -7,7 +7,7 @@ RUN npm install
 COPY . .
 
 RUN chmod +x ./wait-for.sh
-CMD sh -c './wait-for.sh -t 0 mysql-db:3306 -- npm start'
+CMD sh -c './wait-for.sh -t 0 mysql-db:3306 -- npm run dev'
 
 EXPOSE 5000
 
