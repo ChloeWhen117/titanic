@@ -1,5 +1,5 @@
 # Titanic
-Titanic passenger database application, server and deployment code
+Titanic application, server and deployment code
 
 ## Introduction
 
