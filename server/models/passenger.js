@@ -1,7 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Passenger = sequelize.define('Passenger', {
-    PassengerId: DataTypes.INTEGER,
+    PassengerId: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+    },
     Survived: DataTypes.INTEGER,
     PClass: DataTypes.INTEGER,
     Name: DataTypes.STRING,

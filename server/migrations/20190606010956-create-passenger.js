@@ -2,13 +2,9 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Passengers', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
       PassengerId: {
+        allowNull: false,
+        primaryKey: true,
         type: Sequelize.INTEGER
       },
       Survived: {
@@ -43,14 +39,6 @@ module.exports = {
       },
       Embarked: {
         type: Sequelize.STRING
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }
     });
   },

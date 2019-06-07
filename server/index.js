@@ -3,6 +3,7 @@ const cors = require("cors");
 const Sequelize = require("sequelize");
 const dbConfig = require("./config/config.json").development;
 const bodyParser = require('body-parser');
+const Passenger = require("./models").Passenger;
 
 const app = express();
 const passengers = require('./routes/api/passengers');
@@ -32,7 +33,29 @@ connection
   .authenticate()
   .then(() => {
     console.log("Connection has been established successfully.");
-  })
+
+    //Check if database was seeded already, and do it if needed
+    connection.query("SELECT * FROM `Passengers` AS `Passenger` LIMIT 1", { type: connection.QueryTypes.SELECT})
+      .then(passenger => {
+        if (!passenger) {
+          console.log("Database is not seeded, will run seeds now...");
+          const { exec } = require("child_process");
+          try {
+            exec("node_modules/.bin/sequelize db:seed:all", (err, stdout, stderr) => {
+              if (err) {
+                console.log(err);
+                return;
+              }
+              console.log(stdout);
+            });
+          } catch (error) {
+            console.log("Error while seeding database: ", error);
+          }
+        } else {
+          console.log("Database already seeded.");
+        }
+      });
+    })
   .catch(err => {
     console.log("Unable to connect to the database:", err);
   });
