@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# create-jqwidgets-react-tsx-app
+Please refer to its documentation:
+  - [Getting Started](https://github.com/jqwidgets/create-jqwidgets-react-tsx-app/blob/master/README.md#getting-started) 
+  - [jQWidgets React TSX Documentation](http://www.jqwidgets.com/reactjs-components-documentation/)
 
-## Available Scripts
+This project is based on [create-react-app](https://github.com/facebookincubator/create-react-app).
 
-In the project directory, you can run:
+## Quick Overview
+```sh
+npm i -g create-jqwidgets-react-tsx-app 
+
+create-jqwidgets-react-tsx-app my-app
+cd my-app
+npm start
+```
+
+When you’re ready to deploy to production, create a minified bundle with `npm run build`.
+
+## Getting Started
+
+### Installation
+
+Install it once globally:
+
+```sh
+npm install -g create-jqwidgets-react-tsx-app
+```
+
+**Make sure you have the latest version of [Node](https://nodejs.org/en/) on your machine**.
+
+### Creating an App
+
+```sh
+create-jqwidgets-react-tsx-app my-app
+cd my-app
+```
+
+It will create a directory called `my-app` inside the current folder.<br>
+Inside that directory, it will generate the initial project structure and install the transitive dependencies:
+
+```
+my-app
+├── node_modules
+├── public
+├── src
+├── package.json
+├── README.md
+├── tsconfig.json
+```
+
+Subfolders are not shown in order to keep it short.<br>
+Once the installation is done, you can run some commands inside the project folder:
 
 ### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Builds the app in development mode and starts a web server. <br />
+The page will reload if you make edits.
 
 ### `npm run build`
+Builds the app in production mode and stores it in the `build/` directory. <br />
+It correctly bundles React in production mode and optimizes the build for the best performance.  <br />
+By default, it also includes a service worker so that your app loads from local cache on future visits.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Why Use This?
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+**If you’re getting started** with `jQWidgets` and `React`, using `create-jqwidgets-react-tsx-app` is the easiest way to do this.  <br />
+Just install, run and you will see an React jQWidgets Grid on your page. <br />
+Then you can customize the project as much as you want, making something great.

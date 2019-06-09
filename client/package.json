@@ -1,24 +1,24 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.19.0",
-    "react": "^16.8.6",
-    "react-chartjs-2": "^2.7.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+  "_from": "https://github.com/jqwidgets/client/tarball/master",
+  "_id": "client@",
+  "_inBundle": false,
+  "_integrity": "sha512-7OXun7kRCNXUxnohC+2hAXRFbDLZaZxPEdZgveOiULF53B7H/LpKdPlPcUcbBCcBGSGFUOwAYX2UgC2lj8ftbg==",
+  "_location": "/client/client",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "client@https://github.com/jqwidgets/client/tarball/master",
+    "name": "client",
+    "escapedName": "client",
+    "rawSpec": "https://github.com/jqwidgets/client/tarball/master",
+    "saveSpec": "https://github.com/jqwidgets/client/tarball/master",
+    "fetchSpec": "https://github.com/jqwidgets/client/tarball/master"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
+  "_requiredBy": [],
+  "_resolved": "https://github.com/jqwidgets/client/tarball/master",
+  "_shasum": "ec682c0380f1921c6b4698d76f6a390a13011cf4",
+  "_spec": "client@https://github.com/jqwidgets/client/tarball/master",
+  "_where": "/home/chloen2/.nvm/versions/node/v10.16.0/lib/node_modules/client",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -30,5 +30,33 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@types/jest": "24.0.13",
+    "@types/node": "12.0.2",
+    "@types/react": "16.8.17",
+    "@types/react-dom": "16.8.4",
+    "axios": "^0.19.0",
+    "jqwidgets-scripts": "^7.2.0",
+    "react": "^16.8.6",
+    "react-chartjs-2": "^2.7.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
+    "typescript": "3.4.5"
+  },
+  "deprecated": false,
+  "description": "Please refer to its documentation:   - [Getting Started](https://github.com/jqwidgets/client/blob/master/README.md#getting-started)    - [jQWidgets React TSX Documentation](http://www.jqwidgets.com/reactjs-components-documentation/)",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "name": "client",
+  "private": true,
+  "scripts": {
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
+  },
+  "version": ""
 }
