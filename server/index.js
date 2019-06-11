@@ -10,6 +10,7 @@ const passengers = require('./routes/api/passengers');
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 // Use Routes
 app.use('/api/passengers', passengers);
