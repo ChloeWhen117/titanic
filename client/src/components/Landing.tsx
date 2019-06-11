@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Table from './Table';
 
+//TODO: chloen: search bar
+//TODO: chloen: charts
+
 class Landing extends Component {  
   render() {
     return (

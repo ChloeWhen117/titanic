@@ -34,4 +34,15 @@ router.get('/test-query', (req, res) => {
     });
 });
 
+// @route   GET api/passengers/all
+// @desc    Gets all passengers route
+// @access  Public
+router.get('/all', (req, res) => {
+  connection.query("SELECT * FROM `Passengers` AS `Passengers`", { type: Sequelize.QueryTypes.SELECT})
+    .then(passengers => {
+      res.send(passengers);
+    });
+});
+
+
 module.exports = router;

@@ -5,6 +5,8 @@ import 'jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css';
 
 import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
 
+//TODO: chloen: server side pagination
+
 class Table extends React.PureComponent<{}, IGridProps> {
 
     private source: IGridProps['source'] = {
@@ -57,14 +59,13 @@ class Table extends React.PureComponent<{}, IGridProps> {
         super(props);
 
         this.state = {
-            columns: this.columns,
-            source: new jqx.dataAdapter(this.source),
+            columns: this.columns
         };
     }
 
     public componentDidMount() {
         axios
-            .get('http://localhost:5000/api/passengers/test-query')
+            .get('http://localhost:5000/api/passengers/all')
             .then((res) => {
                 let data_arr = [];
                 res.data.forEach(passenger => {
@@ -82,7 +83,7 @@ class Table extends React.PureComponent<{}, IGridProps> {
                     arr.push(passenger.Survived);
                     data_arr.push(arr);
                 });
-                //this.source.localdata = data_arr;
+                this.source.localdata = data_arr;
             })
             .catch((error) => {
                 // handle error
@@ -91,9 +92,10 @@ class Table extends React.PureComponent<{}, IGridProps> {
     }
 
     public render() {
+        let dataAdapter = new jqx.dataAdapter(this.source);
         return (
             <JqxGrid
-                width={850} source={this.state.source} columns={this.state.columns}
+                width={850} source={dataAdapter} columns={this.state.columns}
                 pageable={true} autoheight={true} sortable={true} theme={'material-purple'}
                 altrows={true} enabletooltips={true} editable={true}
             />
