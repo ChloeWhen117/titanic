@@ -1,13 +1,15 @@
 import * as React from 'react';
-import Table from './components/Table';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Landing from './components/Landing';
 import './App.css';
 
 function App() {
     return (
-      <div className="App">
-          <Table 
-          />
-      </div>
+      <Router>
+        <div className="App">
+          <Route exact path="/" component={ Landing } />
+        </div>
+      </Router>
     );
   }
 
