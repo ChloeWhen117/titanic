@@ -2,10 +2,16 @@ import * as React from 'react';
 import 'jqwidgets-scripts/jqwidgets/styles/jqx.base.css';
 import 'jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css';
 import JqxGrid, { IGridProps, jqx } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxgrid';
+import JqxPanel from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxpanel';
 
 //TODO: chloen: server side pagination
 
 class Table extends React.PureComponent<{}, IGridProps> {
+
+    private myGrid = React.createRef<JqxGrid>();
+    private myPanel = React.createRef<JqxPanel>();
+    private pagingInfo = React.createRef<HTMLDivElement>();
+    private eventsLog = React.createRef<HTMLDivElement>();
 
     private source: IGridProps['source'] = {
     };
@@ -27,6 +33,8 @@ class Table extends React.PureComponent<{}, IGridProps> {
 
     constructor(props: {}) {
         super(props);
+        this.onPageChanged = this.onPageChanged.bind(this);
+        this.onPageSizeChanged = this.onPageSizeChanged.bind(this);
         this.state = {
             columns: this.columns
         };
@@ -60,12 +68,51 @@ class Table extends React.PureComponent<{}, IGridProps> {
             }
           });
         return (
-            <JqxGrid
-                width={1280} source={dataAdapter} columns={this.state.columns}
-                pageable={true} autoheight={true} sortable={true} theme={'material-purple'}
-                altrows={true} enabletooltips={true} editable={true}
-            />
+            <div>
+                <JqxGrid
+                    theme={'material-purple'} ref={this.myGrid} 
+                    onPagechanged={this.onPageChanged} onPagesizechanged={this.onPageSizeChanged}
+                    width={'100%'} source={dataAdapter} columns={this.state.columns}
+                    pageable={true} sortable={true} columnsresize={true}
+                    autoheight={true} selectionmode={'multiplerowsextended'}
+                />
+                <div ref={this.eventsLog} style={{ display: 'none', marginTop: '30px' }}>
+                    <div style={{ float: 'left' }}>
+                        Event Log:
+                        <JqxPanel theme={'material-purple'} ref={this.myPanel} style={{ border: 'none' }} width={300} height={300} />
+                    </div>
+                    <div style={{ float: 'left' }}>
+                        Paging Details:
+                        <div ref={this.pagingInfo} />
+                    </div>
+                </div>
+            </div>
         );
+    }
+
+    private onPageChanged(event: any): void {
+        this.eventsLog.current!.style.display = 'block';
+        const loggedElements = document.getElementsByClassName('logged');
+        if (loggedElements.length >= 5) {
+            this.myPanel.current!.clearcontent();
+        }
+        const args = event.args;
+        const eventData = 'pagechanged <div>Page:' + args.pagenum + ', Page Size: ' + args.pagesize + '</div>';
+        this.myPanel.current!.prepend('<div class="logged" style="margin-top: 5px;">' + eventData + '</div>');
+        // get page information.
+        const paginginformation = this.myGrid.current!.getpaginginformation();
+        this.pagingInfo.current!.innerHTML = '<div style="margin-top: 5px;">Page:' + paginginformation.pagenum + ', Page Size: ' + paginginformation.pagesize + ', Pages Count: ' + paginginformation.pagescount + '</div>';
+    }
+
+    private onPageSizeChanged(event: any): void {
+        this.eventsLog.current!.style.display = 'block';
+        this.myPanel.current!.clearcontent();
+        const args = event.args;
+        const eventData = 'pagesizechanged <div>Page:' + args.pagenum + ', Page Size: ' + args.pagesize + ', Old Page Size: ' + args.oldpagesize + '</div>';
+        this.myPanel.current!.prepend('<div style="margin-top: 5px">' + eventData + '</div>');
+        // get page information.
+        const paginginformation = this.myGrid.current!.getpaginginformation();
+        this.pagingInfo.current!.innerHTML = '<div style="margin-top: 5px;">Page:' + paginginformation.pagenum + ', Page Size: ' + paginginformation.pagesize + ', Pages Count: ' + paginginformation.pagescount + '</div>';
     }
 }
 
